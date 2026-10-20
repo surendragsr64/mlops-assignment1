@@ -1,0 +1,6 @@
+.venv/
+notebooks/mlruns
+notebooks/mlflow.db
+tests/__pycache__
+mlflow.db
+src/__pycache__

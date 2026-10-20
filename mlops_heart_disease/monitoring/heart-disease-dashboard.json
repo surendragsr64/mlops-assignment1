@@ -1,0 +1,66 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [
+        {
+          "expr": "predictions_total",
+          "legendFormat": "Total Predictions"
+        }
+      ],
+      "title": "Total Predictions",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "id": 2,
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.5, sum(rate(prediction_confidence_bucket[5m])) by (le))",
+          "legendFormat": "Median Confidence"
+        },
+        {
+          "expr": "histogram_quantile(0.9, sum(rate(prediction_confidence_bucket[5m])) by (le))",
+          "legendFormat": "90th Percentile Confidence"
+        }
+      ],
+      "title": "Prediction Confidence",
+      "type": "timeseries"
+    }
+  ],
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["heart-disease", "monitoring"],
+  "templating": { "list": [] },
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Heart Disease API Monitoring",
+  "uid": "heart-disease-dashboard",
+  "version": 1
+}
